@@ -1,13 +1,13 @@
 package day1;
 
-public class ¿À¹öÇÃ·Î {
+public class ì˜¤ë²„í”Œë¡œ {
 
 	public static void main(String[] args) {
-		//Á¤¼ö °ªÀÌ Á¤ÇØÁø ¹üÀ§¸¦ ³Ñ¾î°¡´Â °æ¿ì¸¦ ¿À¹öÇÃ·Î¿ì¶ó°í ÇÑ´Ù.
-		//integer.max.value : intÀÇ ÃÖ´ë°ª
+		//ì •ìˆ˜ ê°’ì´ ì •í•´ì§„ ë²”ìœ„ë¥¼ ë„˜ì–´ê°€ëŠ” ê²½ìš°ë¥¼ ì˜¤ë²„í”Œë¡œìš°ë¼ê³  í•œë‹¤.
+		//integer.max.value : intì˜ ìµœëŒ€ê°’
 		int num = Integer.MAX_VALUE;
 		
-		//system.out.println(); : ÄÜ¼Ö¿¡ ¿øÇÏ´Â °ªÀ» Ãâ·ÂÇÏ´Â ¸Ş¼Òµå(±â´É).
+		//system.out.println(); : ì½˜ì†”ì— ì›í•˜ëŠ” ê°’ì„ ì¶œë ¥í•˜ëŠ” ë©”ì†Œë“œ(ê¸°ëŠ¥).
 		System.out.println(num);
 		num = num + 1;
 		System.out.println(num);
