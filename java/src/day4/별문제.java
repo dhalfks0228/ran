@@ -91,8 +91,8 @@ public class 별문제 {
 					System.out.println(""+i+j+k);
 				}
 			}
-			
 		}
+		
 		
 	}
 
