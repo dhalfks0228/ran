@@ -16,7 +16,7 @@ public class 랜덤 {
 		int random = (int)((max - min + 1)* Math.random() + min);
 		System.out.println(random);
 		
-		int a = (int)(Math.random()*7);
+		int a = (int)(Math.random()*10);
 		System.out.println(a);
 	}
 
