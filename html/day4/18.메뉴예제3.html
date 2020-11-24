@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴예제3</title>
+    <style>
+        ul, li{
+            list-style: none;
+            padding: 0;
+        }
+        .menu>li{
+            width: 25%;
+            box-sizing: border-box;
+            height: 30px;
+            border: 1px solid black;
+            border-right: none;
+            display: inline-block;
+            text-align: center;
+            float: left;
+            line-height: 30px;
+        }
+        .menu>li>a{
+            text-decoration: none;
+            color: black;
+        }
+        .menu>li:nth-last-child(1){
+            border-right: 1px solid black;
+        }
+        .menu>li:hover{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <ul class="menu">
+        <li><a href="#">메뉴1</a></li>
+        <li><a href="#">메뉴2</a></li>
+        <li><a href="#">메뉴3</a></li>
+        <li><a href="#">메뉴4</a></li>
+    </ul>
+</body>
+</html>
