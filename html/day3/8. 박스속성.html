@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박스속성</title>
+    <style>
+        /* 
+        크기 속성
+        - 컨텐츠
+            - width : 가로
+              - block태그의 기본 가로는 100%로 설정되어 있음.
+              - 여기서 100%는 부모크기의 100%
+            - min-width : 최소 가로 길이 지정
+            - max-width : 최대 가로 길이 지정
+            - height : 세로
+              - 컨텐츠가 없으면 기본이 0, 있으면 컨텐츠의 높이만큼 자동으로 할당.
+         */
+         p{
+             /* width: 300px; */
+             /* 최소 가로의 길이를 1000px로 하고, 부모의 가로가 1200px인 경우 가로의 길이가 1200px이 됨. */
+             /* min-width: 1000px; */
+             max-width: 500px;
+             /* height: 20px; */
+             overflow: hidden;
+         }
+    </style>
+</head>
+<body>
+    <p>
+        안녕하세요. 홍길동입니다. 안녕하세요. 홍길동입니다. 
+    </p>
+
+</body>
+</html>
