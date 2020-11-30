@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자연스럽게 확대</title>
+    <style>
+        .box{
+            width: 214px;
+            height: 292px;
+            overflow: hidden;
+        }
+        img:hover{
+            transform: scale(1.05);
+        }
+        img{
+            /* transition: 속성명 시간; */
+            transition: transform 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="https://s.pstatic.net/shopping.phinf/20201130_20/9b21848d-23bb-44fc-87d0-5525ae5cb20e.jpg?type=f214_292" alt="">
+    </div>
+</body>
+</html>
