@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery.js"></script>
+    <style>
+        .timer-box{
+            height: 100px;
+            width: 500px;
+            border: 1px solid black;
+            margin: 50px auto;
+            font-size: 30px;
+            text-align: center;
+            line-height: 100px;
+            font-weight: bold;
+        }
+        .stop-btn{
+            display: none;
+        }
+        .btn-box{
+            margin: 50px auto;
+            text-align: center;
+        }
+        .timer-record-box{
+            height: 500px;
+            width: 500px;
+            border: 1px solid black;
+            overflow: auto;
+            margin: 50px auto;
+        }
+        .time-record{
+            font-size: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="timer-box">00:00:00.00</div>
+    <div class="btn-box">
+        <button class="btn start-btn">시작</button>
+        <button class="btn stop-btn">중지</button>
+        <button class="btn record-btn">기록</button>
+    </div>
+    <div class="timer-record-box"></div>
+    <script>
+        $(function(){
+            var time = 0;
+            var intervar;
+           // 시작버튼 클릭
+            $('.start-btn').click(function() {
+              $(this).hide();
+              $('.stop-btn').show();
+              intervar = setInterval(() => {
+                //1ms마다 1씩 증가  
+                time++;
+                
+                $('.timer-box').html(getTime(time));
+            }, 10);
+        })
+        //정지버튼 클릭
+        $('.stop-btn').click(function() {
+            $(this).hide();
+            $('.start-btn').show();
+            // 중지
+            clearInterval(intervar);
+        })
+        $('.record-btn').click(function(){
+            var str='<div class="time-record">' + getTime(time) + '</div>'
+            $('.timer-record-box').prepend(str);
+        })
+        //시간을 문자열로 변환하는 함수
+        function getTime(time){
+                //paresInt : 정수로 만들기
+                var s = parseInt(time / 100);
+                var m = parseInt(time / (60 * 100));
+                var h = parseInt(time / (60 * 60 * 100));
+                var ms = time % 100;
+                // 조건선택 연산자. 값 10보다 작을 때 01로 표현하기 위해..
+                s = s < 10 ? '0'+s : s;
+                m = m < 10 ? '0'+m : m;
+                h = h < 10 ? '0'+h : h;
+                ms = ms < 10 ? '0'+ms : ms;
+                return h+':'+m+':'+s+'.'+ms;
+            }
+                
+        })
+    </script>
+</body>
+</html>
