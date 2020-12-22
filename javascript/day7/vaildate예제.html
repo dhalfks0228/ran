@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.validate.js"></script>
+    <script src="../js/additional-methods.js"></script>
+    <style>
+        .title{
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        label.error{
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form action="" id="form" class="container-fluid">
+        <h1 class="title">회원가입</h1>
+        <div class="form-group">
+            <input type="text" class="form-control" id="id" name="id" placeholder="아이디"> 
+            <label id="id-error" class="error" for="id"></label>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="pw" name="pw" placeholder="비밀번호"> 
+            <label id="pw-error" class="error" for="pw"></label>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="pw2" name="pw2" placeholder="비밀번호"> 
+            <label id="pw2-error" class="error" for="pw2"></label>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="age" name="age" placeholder="나이"> 
+            <label id="age-error" class="error" for="age"></label>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="name" name="name" placeholder="이름"> 
+            <label id="name-error" class="error" for="name"></label>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="email" name="email" placeholder="e-mail"> 
+            <label id="email-error" class="error" for="email"></label>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="home" name="home" placeholder="homepage"> 
+            <label id="home-error" class="error" for="home"></label>
+          </div>
+          <button class="btn btn-outline-success col-12">회원가입</button>
+    </form>
+    <script>
+         $(function(){
+            $('#form').validate({
+                rules :{
+                    id : {
+                        required : true,
+                        minlength : 8
+                    },
+                    pw : {
+                        required : true,
+                        regex:/^[a-zA-Z0-9]{8,13}$/
+                       
+                    },
+                    pw2 : {
+                        equalTo : pw
+                    },
+                    age : {
+                        digits : true
+                    },
+                    email : {
+                        email : true
+                    },
+                    home : {
+                        url : true
+                    }
+                },
+                messages : {
+                    id : {
+                        required : '필수로 입력하세요.',
+                        minlength : '최소 {0}글자 이상이여야 합니다.'  
+                    },
+                    pw : {
+                        required : '필수로 입력하세요.',
+                        regex:'비밀번호는 영문자, 숫자로 구성, 8~13자.',
+                        
+                    },
+                    pw2 : {
+                        equalTo : '비밀번호와 일치하지 않습니다.'
+                    },
+                    age : {
+                        digits : '숫자만 입력'
+                    },
+                    email : {
+                        email : '이메일 형식X'
+                    },
+                    home : {
+                        url : 'url 형식X'
+                    }
+                }
+            })
+            $.validate.addMethod('regex',function(value, elemnt, regexp){
+                var re = new RegExp(regexp);
+                return this.optional(elemnt) || re.test(value);
+            })
+        })
+    </script>
+</body>
+</html>
