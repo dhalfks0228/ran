@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스와이퍼 예제</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <style>
+        html,
+        body {
+          position: relative;
+          height: 100%;
+        }
+    
+        body {
+          background: #eee;
+          font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+          font-size: 14px;
+          color: #000;
+          margin: 0;
+          padding: 0;
+        }
+    
+        .swiper-container {
+          width: 500px;
+          height: 500px;
+        }
+    
+        .swiper-slide {
+          text-align: center;
+          font-size: 18px;
+          background: #fff;
+    
+          /* Center slide text vertically */
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          align-items: center;
+        }
+        .img{
+            border: 15px solid black;
+            border-radius: 5px;
+            padding: 30px auto;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+              <img class="img" width="500" height="500" src="https://search1.kakaocdn.net/argon/0x200_85_hr/JzHjf4Vde8" alt="">
+          </div>
+          <div class="swiper-slide">
+              <img class="img" width="500" height="500" src="https://search4.kakaocdn.net/argon/0x200_85_hr/9DxQQS9SMQu" alt="">
+          </div>
+          <div class="swiper-slide">
+              <img class="img" width="500" height="500" src="https://search1.kakaocdn.net/argon/0x200_85_hr/GG8aV48KsJk" alt="">
+          </div>
+          <div class="swiper-slide">
+              <img class="img" width="500" height="500" src="https://search3.kakaocdn.net/argon/0x200_85_hr/7TrJFeIuM38" alt="">
+          </div>
+          
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+          pagination: {
+            el: '.swiper-pagination',
+            type: 'progressbar',
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+    </script>
+</body>
+</html>
