@@ -1,0 +1,63 @@
+
+화면 > 서버
+get : url을 통한 정보전달
+- a 태그를 이용
+- url에서 ?다음에 name=값
+http://localhost:8080/spring?name=홍길동
+
+- 컨트롤러에서는 매개변수 이름을 name과 일치
+(String name)
+
+post
+- form, input/select/textarea를 이용
+
+서버 > 화면
+- 컨트롤러 
+public ModelAndView 메소드명(ModelAndView mv){
+   mv.addObject("변수명",값);
+   return mv;
+}
+
+- 화면
+${변수명}
+
+
+
+db연동 후 id와 일치하는 Email출력
+
+1. localhost:8080/spring/list 입력
+2. Controller들 중 /list를 처리할 수 있는 메소드가 있는지 확인
+=> RequestMapping의 value가 "/list"인 메소드를 확인
+3. userService의 getEmail 메소드 호출
+=> UserServiceImp의 getEmail 메소드가 실행
+4. userDao의 getEmail 메소드 호출
+=> UserDao와 연결된 xml인 UserMapper.xml에서 getEmail이 실행
+=>DB에서 작업을 시작
+   => select인 경우 검색 결과를 돌려줌.
+   => insert나 update인 경우 결과값이 없음.
+
+Controller   > service        > dao
+                   serviceImp      Mapper.xml
+
+
+localhost:8080/spring/login
+1. /views/main/login.jsp을 만든 후 연결
+2. input태그를 이용하여 login.jsp에 아이디/비밀번호 입력창
+3. 아이디와 비밀번호를 입력 후 전송을 하면 서버에 post방식으로 
+   아이디와 비밀번호 정보를 전달
+4. 서버에서 입력받은 아이디와 로그인 정보가 일치하면 메인화면으로
+   일치하지 않으면 로그인화면으로 보냄
+- 컨트롤러는 userService에게 아이디와 비밀번호를 전달하여 
+  회원인지 아닌지 알려달라고 요청
+- UserServiceImp은 userDao에게 아이디를 전달하여 해당 아이디와
+  일치하는 회원 정보를 요청해서 가져옴.
+- 회원 정보가 있으면 UserServiceImp은 userDao가 보내준 정보의
+  비밀번호와 HomeController에서 보내준 비밀번호를 비교하여 
+  같으면 로그인 성공, 다르면 로그인 실패라고 알려줌.
+
+
+Controller           > Service                    > Dao
+입력한                   입력한		     입력한 
+아이디/비번            아이디/비번	     아이디
+abcd1234
+/1234
