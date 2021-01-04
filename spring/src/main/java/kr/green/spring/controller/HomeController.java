@@ -23,26 +23,9 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView homeGet(ModelAndView mv, String name) {
-		mv.setViewName("/main/home");
+		mv.setViewName("/main/login");
 		
 		//http://localhost:8080/spring/?name=임꺽정
-		return mv;
-	}
-
-	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public ModelAndView homePost(ModelAndView mv, String name, String fruit) {
-		System.out.println("이름(post) : " + name);
-		System.out.println("과일(post) : " + fruit);
-		mv.setViewName("redirect:/");
-		return mv;
-	}
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public ModelAndView testGet(ModelAndView mv) {
-		//model.addAttribute("변수명", 값);
-		//값으로 문자열, 정수, 실수, 객체 등 다양한 값들을 보낼 수 있다.
-		//model.addAttribute("name", "홍길동");
-		mv.addObject("name", "홍길동");
-		mv.setViewName("/main/test");
 		return mv;
 	}
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
@@ -65,36 +48,6 @@ public class HomeController {
 		}
 		return mv;
 	}
-	@RequestMapping(value = "/tiles", method = RequestMethod.GET)
-	public ModelAndView tilesGet(ModelAndView mv) {
-		mv.setViewName("/main/tiles");
-		return mv;
-	}
-	@RequestMapping(value = "/tiles2", method = RequestMethod.GET)
-	public ModelAndView tiles2Get(ModelAndView mv) {
-		mv.setViewName("/main/tiles2");
-		return mv;
-	}
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView listGet(ModelAndView mv) {
-		ArrayList<String> list = new ArrayList<String>();
-		list.add("홍길동");
-		list.add("임꺽정");
-		list.add("이순신");
-		mv.addObject("list", list);
-		mv.addObject("option", "번호");
-		mv.setViewName("/main/list");
-		String email = userService.getEmail("abcd12345");
-		String name = userService.getName("abcd1234");
-		UserVo user = userService.getUser("abcd1234");
-		//"abcd1234"와 일치하는 회원정보의 나이를 가져오는 코드
-		int age = userService.getAge("abcd1234");
-		System.out.println(email);
-		System.out.println(name);
-		System.out.println(user);
-		System.out.println(age);
-		return mv;
-	}
 	@RequestMapping(value = "/user/list", method = RequestMethod.GET)
 	public ModelAndView userListGet(ModelAndView mv) {
 		ArrayList<UserVo> list = new ArrayList<UserVo>();
@@ -102,7 +55,6 @@ public class HomeController {
 		list = userService.getAllUser();
 		mv.addObject("list", list);
 		mv.setViewName("/main/list2");
-		
 		return mv;
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -112,8 +64,6 @@ public class HomeController {
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView loginPost(ModelAndView mv, String id, String pw) {
-		System.out.println("id : " + id);
-		System.out.println("pw : " + pw);
 		boolean isUser = userService.isUser(id, pw);
 		if(isUser) {
 			mv.setViewName("redirect:/"); //로그인 성공시

@@ -10,7 +10,7 @@
     
 </head>
 <body>
-<form method="post">
+<form method="post" action="/spring/login">
 <input type="text" id="id" name="id" placeholder="아이디">
 <input type="password" id="pw" name="pw" placeholder="비밀번호">
 <button type="submit">전송</button>
