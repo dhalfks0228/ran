@@ -7,4 +7,8 @@
   <select id="getUser" resultType="kr.green.test.vo.UserVo">
     select * from user where id = #{id}
   </select>
+  <insert id="insertUser" parameterType="kr.green.test.vo.UserVo">
+    insert into user(id, pw, age, name, email, home) 
+    values(#{user.id}, #{user.pw},#{user.age}, #{user.name}, #{user.email}, #{user.home})
+  </insert>
 </mapper>

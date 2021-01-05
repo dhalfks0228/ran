@@ -8,7 +8,7 @@
 </head>
 <body>
 <!-- url이 localhost:8080이 기본. -->
-<form action="/test/login" method="post">
+<form action="<%=request.getContextPath()%>/login" method="post">
     <div class="form-group">
       <label for="usr">Name:</label>
       <input type="text" class="form-control" id="usr" name="username">

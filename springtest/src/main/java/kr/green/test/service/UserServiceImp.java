@@ -46,8 +46,16 @@ public class UserServiceImp implements UserService {
 
 	@Override
 	public boolean signup(UserVo user) {
+		UserVo tmp = userDao.getUser(user.getId());
+		//이미 가입된 회원이면 회원가입 진행 불가
+		if(tmp != null) {
+			return false;
+		}
+		//가입된 회원이 아니면 회원 가입을 진행
 		
-		return false;
+			userDao.insertUser(user);
+			return true;
+		
 	}
 
 	

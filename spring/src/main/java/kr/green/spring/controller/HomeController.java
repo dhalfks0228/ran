@@ -2,6 +2,8 @@ package kr.green.spring.controller;
 
 import java.util.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,12 +66,26 @@ public class HomeController {
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView loginPost(ModelAndView mv, String id, String pw) {
-		boolean isUser = userService.isUser(id, pw);
-		if(isUser) {
+		//수정 전 : id와 pw가 일치하는 회원이 있으면 true, 없으면 false
+		//수정 후 : id와 pw가 일치하는 회원이 있으면 회원 정보를 가져오고
+		//			없으면 null을 가져옴.
+		//boolean isUser = userService.isUser(id, pw);
+		UserVo isUser = userService.isUser(id, pw);
+		mv.addObject("user", isUser);
+		if(isUser != null) {
 			mv.setViewName("redirect:/"); //로그인 성공시
+			//localhost:8080/spring/
 		}else {
 			mv.setViewName("redirect:/login"); //로그인 실패시
+			//localhost:8080/spring/login
 		}
+		return mv;
+	}
+	@RequestMapping(value = "/signout", method = RequestMethod.GET)
+	public ModelAndView signoutGet(ModelAndView mv, HttpServletRequest r) {
+		//세션에 저장된 user 정보를 삭제
+		r.getSession().removeAttribute("user");
+		mv.setViewName("redirect:/");
 		return mv;
 	}
 }
