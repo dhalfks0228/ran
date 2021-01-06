@@ -20,6 +20,9 @@
 	      <a class="nav-link" href="<%=request.getContextPath()%>/signout">로그아웃</a>
 	    </li>
     </c:if>
+     <li class="nav-item">
+	      <a class="nav-link" href="<%=request.getContextPath()%>/board/list">게시판</a>
+	    </li>
   </ul>
 
 </nav>
