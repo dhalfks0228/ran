@@ -72,6 +72,7 @@ public class HomeController {
 		//boolean isUser = userService.isUser(id, pw);
 		UserVo isUser = userService.isUser(id, pw);
 		mv.addObject("user", isUser);
+		
 		if(isUser != null) {
 			mv.setViewName("redirect:/"); //로그인 성공시
 			//localhost:8080/spring/

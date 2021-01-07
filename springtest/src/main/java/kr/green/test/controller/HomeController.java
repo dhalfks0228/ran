@@ -1,8 +1,6 @@
 package kr.green.test.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +23,7 @@ public class HomeController {
 	@Autowired
 	private UserService userService;
 	
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public  ModelAndView home(ModelAndView mv) {
 		
@@ -43,15 +42,19 @@ public class HomeController {
 		return mv;
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public  ModelAndView loginPost(ModelAndView mv, String username, String password) {
-		System.out.println("id : " + username);
-		System.out.println("pw : " + password);
-		boolean isUser = userService.isUser(username, password);
+	public  ModelAndView loginPost(ModelAndView mv, String id, String pw) {
+		
+		//boolean isUser = userService.isUser(id, pw);
+		UserVo isUser = userService.isUser(id, pw);
+		mv.addObject("user", isUser);
+		System.out.println(id);
+		System.out.println(pw);
 		System.out.println("결과 : " + isUser);
-		if(isUser) {
-			mv.setViewName("redirect:/");
+		
+		if(isUser != null ) {
+			mv.setViewName("redirect:/"); // 로그인 성공
 		}else {
-			mv.setViewName("redirect:/login");
+			mv.setViewName("redirect:/login");//로그인 실패
 		}
 		return mv;
 	}
@@ -71,6 +74,12 @@ public class HomeController {
 			mv.setViewName("redirect:/signup");
 		}
 		
+		return mv;
+	}
+	@RequestMapping(value = "/signout", method = RequestMethod.GET)
+	public  ModelAndView signoutGet(ModelAndView mv, HttpServletRequest request) {
+		request.getSession().removeAttribute("user");
+		mv.setViewName("redirect:/");
 		return mv;
 	}
 	
